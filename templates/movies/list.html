@@ -1,0 +1,22 @@
+{% extends '_layouts/base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movies/list.css' %}" />
+{% endblock css %}
+{% block content %}
+    <h1>{{ movies.type }}</h1>
+    {% for movie in movies.results %}
+        {% if not movie.adult or not safe_mode %}
+            <div class="movie-info">
+                <img class="movie-poster" src="{{ movie.poster_path }}" />
+                <h3>
+                    <a class="movie-title" href="{% url 'movie-id' movie.id %}">{{ movie.title }}</a>
+                    - <small>Rating: {{ movie.vote_average }} ({{ movie.vote_count }} votes)</small>
+                </h3>
+                <p class="movie-overview">{{ movie.overview }}</p>
+            </div>
+        {% endif %}
+    {% empty %}
+        No Results for {{ query }}.
+    {% endfor %}
+{% endblock content %}}

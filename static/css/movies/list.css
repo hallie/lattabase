@@ -1,0 +1,26 @@
+.movie-info {
+    display: table;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 550px;
+}
+
+.movie-poster {
+    height: 100px;
+    display: table-cell;
+    float: left;
+    padding-right: 15px;
+    vertical-align: top;
+}
+
+.movie-title {
+    vertical-align: top;
+}
+
+.movie-vote {
+    vertical-align: top;
+}
+
+.movie-overview {
+    vertical-align: top;
+}

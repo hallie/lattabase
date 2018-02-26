@@ -1,0 +1,25 @@
+{% extends '_layouts/base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movies/list.css' %}" />
+{% endblock css %}
+{% block content %}
+    <div class="movie-info">
+        <img src="{{ movie.backdrop_path }}" />
+        <img class="movie-poster" src="{{ movie.poster_path }}" />
+        <h3>
+            <a class="movie-title" href="{% url 'movie-id' movie.id %}">{{ movie.title }}</a>
+            <small>( {{ movie.release_date.year }} )</small>
+        </h3>
+        Rating: {{ movie.vote_average }} ({{ movie.vote_count }} votes)
+        <br/>
+        <p class="movie-overview">{{ movie.overview }}</p>
+        {% if movie.homepage %}
+            Offical Site: <a href="{{ movie.homepage }}">{{ movie.homepage }}</a>
+        {% endif %}
+        <br/>
+        Budget: {{ movie.budget }}
+        <br/>
+        IMDB page: <a href="{{ move.imdb_id }}">{{ movie.imdb_id }}</a>
+    </div>
+{% endblock content %}}

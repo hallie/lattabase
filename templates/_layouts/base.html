@@ -1,0 +1,23 @@
+<head></head><!Doctype html>
+<html>
+  <head>
+    <title>{% block title %} {{ title }} | Movie DB {% endblock title %}</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="icon" type="image/png" href="//www.themoviedb.org/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_layouts/base.css' %}" />
+    {% block css %}{% endblock css %}
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+    <main role="document">
+      <form action="{% url 'movie-search' %}" method="get">{% csrf_token %}
+        <input id="search-bar" name="query" type="text" placeholder="Find Movie">
+        <input id="search-button" type="submit" value="Search">
+        <input id="sfw" name="safe_mode" type="checkbox"><label>Safe Search</label>
+      </form>
+      {% block content %}{% endblock %}
+    </main>
+    {% block js %}{% endblock js %}
+  </body>
+</html>
